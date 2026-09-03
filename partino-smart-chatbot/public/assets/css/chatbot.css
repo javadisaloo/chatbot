@@ -1,0 +1,660 @@
+/**
+ * Partino Smart Parts Chatbot — frontend styles.
+ * Fully namespaced under #partino-chatbot. No global selectors.
+ */
+
+/* Vazirmatn (scoped usage only — applied inside #partino-chatbot) */
+@font-face {
+	font-family: "Vazirmatn-Partino";
+	src: local("Vazirmatn"), local("Vazirmatn Regular"), local("Vazir");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+#partino-chatbot,
+#partino-chatbot * {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: "Vazirmatn-Partino", Vazirmatn, Vazir, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+#partino-chatbot {
+	position: fixed;
+	z-index: 999990;
+	inset-inline: 0;
+	bottom: 0;
+	pointer-events: none;
+	direction: rtl;
+	font-size: var(--partino-font-size, 14px);
+	line-height: 1.7;
+	--partino-primary: #2069b2;
+	--partino-secondary: #16a34a;
+	--partino-bg: #eef2f7;
+	--partino-text: #1e293b;
+	--partino-border: #e2e8f0;
+	--partino-radius: 24px;
+	--partino-btn-radius: 14px;
+	--partino-width: 400px;
+	--partino-height: 640px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Launcher button                                                     */
+/* ------------------------------------------------------------------ */
+#partino-chatbot .partino-chatbot-launcher {
+	position: fixed;
+	bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+	width: 58px;
+	height: 58px;
+	border: none;
+	border-radius: 50%;
+	background: var(--partino-launcher, var(--partino-primary));
+	color: #fff;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 8px 24px rgba(15, 44, 82, 0.28);
+	pointer-events: auto;
+	transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+#partino-chatbot .partino-chatbot-launcher:hover {
+	transform: translateY(-2px) scale(1.04);
+	box-shadow: 0 12px 30px rgba(15, 44, 82, 0.34);
+}
+#partino-chatbot .partino-chatbot-launcher:focus-visible {
+	outline: 3px solid rgba(32, 105, 178, 0.45);
+	outline-offset: 2px;
+}
+#partino-chatbot .partino-chatbot-launcher svg {
+	width: 28px;
+	height: 28px;
+	display: block;
+}
+#partino-chatbot.partino-pos-left .partino-chatbot-launcher {
+	left: 20px;
+}
+#partino-chatbot.partino-pos-right .partino-chatbot-launcher {
+	right: 20px;
+}
+#partino-chatbot .partino-chatbot-launcher[hidden] {
+	display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Window                                                              */
+/* ------------------------------------------------------------------ */
+#partino-chatbot .partino-chatbot-window {
+	position: fixed;
+	bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+	width: var(--partino-width);
+	max-width: calc(100vw - 24px);
+	height: var(--partino-height);
+	max-height: calc(100dvh - 40px - env(safe-area-inset-top, 0px));
+	background: #ffffff;
+	border-radius: 28px;
+	box-shadow: 0 18px 60px rgba(15, 30, 60, 0.22), 0 4px 14px rgba(15, 30, 60, 0.10);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	pointer-events: auto;
+	direction: rtl;
+	color: var(--partino-text);
+}
+#partino-chatbot.partino-pos-left .partino-chatbot-window {
+	left: 16px;
+}
+#partino-chatbot.partino-pos-right .partino-chatbot-window {
+	right: 16px;
+}
+#partino-chatbot .partino-chatbot-window[hidden] {
+	display: none;
+}
+
+#partino-chatbot .partino-chatbot-window.partino-anim-in {
+	animation: partino-slide-up 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes partino-slide-up {
+	from {
+		opacity: 0;
+		transform: translateY(26px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	#partino-chatbot .partino-chatbot-window.partino-anim-in,
+	#partino-chatbot .partino-chatbot-msg {
+		animation: none !important;
+	}
+	#partino-chatbot .partino-chatbot-launcher {
+		transition: none;
+	}
+}
+
+/* ------------------------------------------------------------------ */
+/* Header                                                              */
+/* ------------------------------------------------------------------ */
+#partino-chatbot .partino-chatbot-header {
+	flex: 0 0 auto;
+	min-height: var(--partino-header-h, 84px);
+	background: #ffffff;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px 20px;
+	border-bottom: 1px solid #eef1f6;
+}
+#partino-chatbot .partino-chatbot-header-close {
+	order: 1;
+	width: 44px;
+	height: 44px;
+	flex: 0 0 auto;
+	border: none;
+	background: #f4f6fa;
+	border-radius: 14px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #33415c;
+	transition: background 0.15s ease;
+}
+#partino-chatbot .partino-chatbot-header-close:hover {
+	background: #e9edf4;
+}
+#partino-chatbot .partino-chatbot-header-close:focus-visible {
+	outline: 2px solid var(--partino-primary);
+	outline-offset: 1px;
+}
+#partino-chatbot .partino-chatbot-header-close svg {
+	width: 20px;
+	height: 20px;
+	display: block;
+}
+#partino-chatbot .partino-chatbot-logo {
+	order: 2;
+	width: 48px;
+	height: 48px;
+	flex: 0 0 auto;
+	border-radius: 14px;
+	border: 1px solid #eef1f6;
+	background: #fff;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#partino-chatbot .partino-chatbot-logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+#partino-chatbot .partino-chatbot-logo-fallback {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--partino-primary);
+	color: #fff;
+	font-weight: 800;
+	font-size: 18px;
+}
+#partino-chatbot .partino-chatbot-header-texts {
+	order: 3;
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	text-align: right;
+}
+#partino-chatbot .partino-chatbot-title {
+	font-size: 15.5px;
+	font-weight: 800;
+	color: #0f1c33;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#partino-chatbot .partino-chatbot-subtitle {
+	font-size: 12px;
+	color: #7c8aa5;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ------------------------------------------------------------------ */
+/* Body                                                                */
+/* ------------------------------------------------------------------ */
+#partino-chatbot .partino-chatbot-body {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	background: var(--partino-bg);
+	padding: 16px 14px 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	scroll-behavior: smooth;
+}
+#partino-chatbot .partino-chatbot-body::-webkit-scrollbar {
+	width: 5px;
+}
+#partino-chatbot .partino-chatbot-body::-webkit-scrollbar-thumb {
+	background: #c8d2e0;
+	border-radius: 4px;
+}
+
+/* Message cards */
+#partino-chatbot .partino-chatbot-msg {
+	animation: partino-fade-in 0.22s ease;
+	max-width: 92%;
+}
+@keyframes partino-fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+#partino-chatbot .partino-chatbot-msg.partino-role-assistant {
+	align-self: stretch;
+	max-width: 100%;
+}
+#partino-chatbot .partino-chatbot-msg.partino-role-user {
+	align-self: flex-start;
+}
+
+#partino-chatbot .partino-chatbot-card {
+	background: #ffffff;
+	border: 1px solid var(--partino-border);
+	border-radius: var(--partino-radius);
+	box-shadow: 0 2px 10px rgba(20, 40, 80, 0.05);
+	padding: 18px 16px;
+	text-align: center;
+	white-space: pre-line;
+	color: var(--partino-text);
+	font-size: var(--partino-font-size, 14px);
+}
+#partino-chatbot .partino-chatbot-msg.partino-role-user .partino-chatbot-card {
+	background: var(--partino-primary);
+	color: #ffffff;
+	border-color: transparent;
+	text-align: right;
+	border-radius: var(--partino-btn-radius);
+	padding: 10px 16px;
+	box-shadow: 0 2px 8px rgba(32, 105, 178, 0.25);
+}
+
+#partino-chatbot .partino-chatbot-badge {
+	display: inline-block;
+	background: #e8f1fb;
+	color: var(--partino-primary);
+	font-size: 11.5px;
+	font-weight: 700;
+	border-radius: 999px;
+	padding: 4px 14px;
+	margin-bottom: 10px;
+}
+
+/* Option buttons */
+#partino-chatbot .partino-chatbot-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	padding: 2px 2px 0;
+}
+#partino-chatbot .partino-chatbot-options.partino-two-cols .partino-chatbot-option {
+	flex: 1 1 calc(50% - 5px);
+}
+#partino-chatbot .partino-chatbot-option {
+	flex: 1 1 auto;
+	min-height: 46px;
+	background: #ffffff;
+	border: 1px solid var(--partino-border);
+	border-radius: var(--partino-btn-radius);
+	box-shadow: 0 1px 5px rgba(20, 40, 80, 0.05);
+	color: #22314e;
+	font-size: 13.5px;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 10px 14px;
+	transition: border-color 0.14s ease, background 0.14s ease, transform 0.1s ease;
+	text-align: center;
+}
+#partino-chatbot .partino-chatbot-option:hover:not(:disabled) {
+	border-color: var(--partino-primary);
+	background: #f6faff;
+}
+#partino-chatbot .partino-chatbot-option:active:not(:disabled) {
+	transform: scale(0.98);
+}
+#partino-chatbot .partino-chatbot-option:focus-visible {
+	outline: 2px solid var(--partino-primary);
+	outline-offset: 1px;
+}
+#partino-chatbot .partino-chatbot-option:disabled {
+	opacity: 0.55;
+	cursor: default;
+}
+#partino-chatbot .partino-chatbot-option.partino-primary {
+	background: var(--partino-primary);
+	border-color: var(--partino-primary);
+	color: #fff;
+}
+#partino-chatbot .partino-chatbot-option.partino-primary:hover:not(:disabled) {
+	background: #185a9c;
+}
+
+/* Timestamp */
+#partino-chatbot .partino-chatbot-time {
+	font-size: 10.5px;
+	color: #9aa8bf;
+	padding: 0 6px;
+	align-self: flex-end;
+}
+#partino-chatbot .partino-chatbot-msg.partino-role-user + .partino-chatbot-time {
+	align-self: flex-start;
+}
+
+/* Typing indicator */
+#partino-chatbot .partino-chatbot-typing {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	background: #ffffff;
+	border: 1px solid var(--partino-border);
+	border-radius: 18px;
+	padding: 12px 18px;
+	align-self: flex-end;
+	box-shadow: 0 1px 5px rgba(20, 40, 80, 0.05);
+}
+#partino-chatbot .partino-chatbot-typing i {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #a9b7cd;
+	animation: partino-bounce 1.1s infinite ease-in-out;
+}
+#partino-chatbot .partino-chatbot-typing i:nth-child(2) {
+	animation-delay: 0.15s;
+}
+#partino-chatbot .partino-chatbot-typing i:nth-child(3) {
+	animation-delay: 0.3s;
+}
+@keyframes partino-bounce {
+	0%, 70%, 100% {
+		transform: translateY(0);
+		opacity: 0.55;
+	}
+	35% {
+		transform: translateY(-5px);
+		opacity: 1;
+	}
+}
+
+/* Error card */
+#partino-chatbot .partino-chatbot-error {
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	color: #b91c1c;
+	border-radius: var(--partino-btn-radius);
+	padding: 12px 14px;
+	font-size: 13px;
+	text-align: center;
+	white-space: pre-line;
+}
+
+/* ------------------------------------------------------------------ */
+/* Bottom action bar                                                   */
+/* ------------------------------------------------------------------ */
+#partino-chatbot .partino-chatbot-actionbar {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 12px 4px;
+	background: var(--partino-bg);
+}
+#partino-chatbot .partino-chatbot-menu-btn {
+	width: 44px;
+	height: 44px;
+	flex: 0 0 auto;
+	border: 1px solid var(--partino-border);
+	background: #fff;
+	border-radius: 999px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #33415c;
+	box-shadow: 0 1px 5px rgba(20, 40, 80, 0.05);
+	order: 4;
+	margin-inline-start: auto;
+}
+#partino-chatbot .partino-chatbot-menu-btn:focus-visible,
+#partino-chatbot .partino-chatbot-action:focus-visible {
+	outline: 2px solid var(--partino-primary);
+	outline-offset: 1px;
+}
+#partino-chatbot .partino-chatbot-actions-scroll {
+	display: flex;
+	gap: 8px;
+	overflow-x: auto;
+	scrollbar-width: none;
+	padding: 2px;
+}
+#partino-chatbot .partino-chatbot-actions-scroll::-webkit-scrollbar {
+	display: none;
+}
+#partino-chatbot .partino-chatbot-action {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 44px;
+	padding: 8px 16px;
+	background: #fff;
+	border: 1px solid var(--partino-border);
+	border-radius: 999px;
+	font-size: 13px;
+	font-weight: 700;
+	color: #22314e;
+	cursor: pointer;
+	box-shadow: 0 1px 5px rgba(20, 40, 80, 0.05);
+	white-space: nowrap;
+	transition: border-color 0.14s ease, background 0.14s ease;
+}
+#partino-chatbot .partino-chatbot-action:hover {
+	border-color: var(--partino-primary);
+}
+#partino-chatbot .partino-chatbot-action svg {
+	width: 17px;
+	height: 17px;
+	flex: 0 0 auto;
+}
+#partino-chatbot .partino-chatbot-action.partino-accent {
+	background: #f0faf1;
+	border-color: #bfe8c6;
+	color: #15803d;
+}
+#partino-chatbot .partino-chatbot-action.partino-accent:hover {
+	border-color: var(--partino-secondary);
+}
+
+/* ------------------------------------------------------------------ */
+/* Input bar                                                           */
+/* ------------------------------------------------------------------ */
+#partino-chatbot .partino-chatbot-inputbar {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+	background: var(--partino-bg);
+}
+#partino-chatbot .partino-chatbot-mic {
+	width: 48px;
+	height: 48px;
+	flex: 0 0 auto;
+	border: 1px solid var(--partino-border);
+	background: #fff;
+	border-radius: 16px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--partino-primary);
+	box-shadow: 0 1px 5px rgba(20, 40, 80, 0.05);
+	order: 3;
+}
+#partino-chatbot .partino-chatbot-mic svg {
+	width: 21px;
+	height: 21px;
+}
+#partino-chatbot .partino-chatbot-mic:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+#partino-chatbot .partino-chatbot-mic.partino-recording {
+	background: #fee2e2;
+	border-color: #fca5a5;
+	color: #dc2626;
+	animation: partino-pulse 1.2s infinite;
+}
+@keyframes partino-pulse {
+	0%, 100% {
+		box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.25);
+	}
+	50% {
+		box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+	}
+}
+#partino-chatbot .partino-chatbot-input-wrap {
+	flex: 1 1 auto;
+	display: flex;
+	align-items: center;
+	background: #fff;
+	border: 1px solid var(--partino-border);
+	border-radius: 18px;
+	box-shadow: 0 1px 5px rgba(20, 40, 80, 0.05);
+	padding: 4px 6px 4px 4px;
+	order: 2;
+	min-width: 0;
+}
+#partino-chatbot .partino-chatbot-input {
+	flex: 1 1 auto;
+	min-width: 0;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: 14px;
+	color: var(--partino-text);
+	padding: 10px 10px;
+	direction: rtl;
+	text-align: right;
+}
+#partino-chatbot .partino-chatbot-input::placeholder {
+	color: #9aa8bf;
+}
+#partino-chatbot .partino-chatbot-input.partino-ltr-input {
+	direction: ltr;
+	text-align: left;
+}
+#partino-chatbot .partino-chatbot-send {
+	width: 44px;
+	height: 44px;
+	flex: 0 0 auto;
+	border: none;
+	background: var(--partino-primary);
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transition: background 0.14s ease, transform 0.1s ease;
+	order: 1;
+}
+#partino-chatbot .partino-chatbot-send svg {
+	width: 20px;
+	height: 20px;
+}
+#partino-chatbot .partino-chatbot-send:hover:not(:disabled) {
+	background: #185a9c;
+}
+#partino-chatbot .partino-chatbot-send:active:not(:disabled) {
+	transform: scale(0.94);
+}
+#partino-chatbot .partino-chatbot-send:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+#partino-chatbot .partino-chatbot-send:focus-visible,
+#partino-chatbot .partino-chatbot-mic:focus-visible {
+	outline: 2px solid var(--partino-primary);
+	outline-offset: 2px;
+}
+
+/* Menu popover */
+#partino-chatbot .partino-chatbot-menu {
+	position: absolute;
+	bottom: 118px;
+	inset-inline-start: 12px;
+	background: #fff;
+	border: 1px solid var(--partino-border);
+	border-radius: 14px;
+	box-shadow: 0 10px 30px rgba(15, 30, 60, 0.18);
+	padding: 6px;
+	display: flex;
+	flex-direction: column;
+	min-width: 170px;
+	z-index: 5;
+}
+#partino-chatbot .partino-chatbot-menu[hidden] {
+	display: none;
+}
+#partino-chatbot .partino-chatbot-menu button {
+	border: none;
+	background: transparent;
+	text-align: right;
+	font-size: 13px;
+	color: #22314e;
+	padding: 10px 12px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+#partino-chatbot .partino-chatbot-menu button:hover {
+	background: #f2f6fc;
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile: bottom sheet                                                */
+/* ------------------------------------------------------------------ */
+@media (max-width: 520px) {
+	#partino-chatbot .partino-chatbot-window {
+		left: 8px !important;
+		right: 8px !important;
+		bottom: 0;
+		width: auto;
+		max-width: none;
+		height: min(var(--partino-height), calc(100dvh - 24px - env(safe-area-inset-top, 0px)));
+		max-height: calc(100dvh - 24px - env(safe-area-inset-top, 0px));
+		border-radius: 28px 28px 0 0;
+		box-shadow: 0 -8px 40px rgba(15, 30, 60, 0.25);
+	}
+	#partino-chatbot .partino-chatbot-launcher {
+		bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+	}
+}

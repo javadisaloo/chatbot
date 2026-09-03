@@ -1,0 +1,514 @@
+/**
+ * Partino Smart Parts Chatbot — admin styles.
+ * Namespaced under .partino-admin; does not touch WP admin globals.
+ */
+
+.partino-admin {
+	direction: rtl;
+}
+
+.partino-admin .partino-admin-title {
+	font-weight: 700;
+	margin-bottom: 14px;
+}
+
+/* Notices */
+.partino-admin .partino-notice {
+	padding: 10px 16px;
+	border-radius: 8px;
+	margin: 12px 0;
+	font-size: 13px;
+	border: 1px solid transparent;
+}
+.partino-admin .partino-notice-success {
+	background: #ecfdf5;
+	border-color: #a7f3d0;
+	color: #065f46;
+}
+.partino-admin .partino-notice-error {
+	background: #fef2f2;
+	border-color: #fecaca;
+	color: #991b1b;
+}
+
+/* Stat cards */
+.partino-admin .partino-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+	gap: 14px;
+	margin: 16px 0 24px;
+}
+.partino-admin .partino-card {
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 14px;
+	padding: 18px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	box-shadow: 0 1px 4px rgba(15, 30, 60, 0.05);
+}
+.partino-admin .partino-card-accent {
+	border-color: #93c5fd;
+	background: #eff6ff;
+}
+.partino-admin .partino-card-value {
+	font-size: 26px;
+	font-weight: 800;
+	color: #0f1c33;
+}
+.partino-admin .partino-card-label {
+	font-size: 12.5px;
+	color: #64748b;
+}
+
+/* Panels */
+.partino-admin .partino-panel {
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 14px;
+	padding: 18px 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 4px rgba(15, 30, 60, 0.04);
+}
+.partino-admin .partino-panel h2 {
+	margin-top: 0;
+	font-size: 15px;
+}
+
+/* Tables */
+.partino-admin .partino-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	overflow: hidden;
+}
+.partino-admin .partino-table th,
+.partino-admin .partino-table td {
+	padding: 10px 12px;
+	text-align: right;
+	border-bottom: 1px solid #eef2f7;
+	font-size: 13px;
+}
+.partino-admin .partino-table thead th {
+	background: #f8fafc;
+	font-weight: 700;
+	color: #334155;
+}
+.partino-admin .partino-table tbody tr:hover {
+	background: #f9fbfd;
+}
+.partino-admin .partino-col-check {
+	width: 34px;
+}
+.partino-admin .partino-actions {
+	white-space: nowrap;
+}
+.partino-admin .partino-actions .button {
+	margin-inline-end: 4px;
+}
+
+/* Badges */
+.partino-admin .partino-badge {
+	display: inline-block;
+	padding: 3px 12px;
+	border-radius: 999px;
+	font-size: 11.5px;
+	font-weight: 700;
+	background: #f1f5f9;
+	color: #475569;
+}
+.partino-admin .partino-badge-new {
+	background: #eff6ff;
+	color: #1d4ed8;
+}
+.partino-admin .partino-badge-contacted {
+	background: #fefce8;
+	color: #a16207;
+}
+.partino-admin .partino-badge-in_progress {
+	background: #fdf4ff;
+	color: #a21caf;
+}
+.partino-admin .partino-badge-quoted {
+	background: #ecfeff;
+	color: #0e7490;
+}
+.partino-admin .partino-badge-completed {
+	background: #ecfdf5;
+	color: #047857;
+}
+.partino-admin .partino-badge-cancelled {
+	background: #fef2f2;
+	color: #b91c1c;
+}
+.partino-admin .partino-log-error {
+	background: #fef2f2;
+	color: #b91c1c;
+}
+.partino-admin .partino-log-warning {
+	background: #fefce8;
+	color: #a16207;
+}
+.partino-admin .partino-log-info {
+	background: #eff6ff;
+	color: #1d4ed8;
+}
+.partino-admin .partino-log-debug {
+	background: #f1f5f9;
+	color: #475569;
+}
+
+/* Filters / bulk */
+.partino-admin .partino-filters {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin: 14px 0;
+}
+.partino-admin .partino-filters form {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+.partino-admin .partino-bulkbar {
+	display: flex;
+	gap: 8px;
+	margin: 10px 0;
+}
+.partino-admin .partino-pagination {
+	margin: 16px 0;
+	text-align: center;
+}
+.partino-admin .partino-pagination .page-numbers {
+	display: inline-block;
+	padding: 5px 11px;
+	margin: 0 2px;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	background: #fff;
+	text-decoration: none;
+}
+.partino-admin .partino-pagination .page-numbers.current {
+	background: #2271b1;
+	color: #fff;
+	border-color: #2271b1;
+}
+
+/* Empty state */
+.partino-admin .partino-empty {
+	text-align: center;
+	padding: 44px 20px;
+	background: #fff;
+	border: 1px dashed #cbd5e1;
+	border-radius: 14px;
+	color: #64748b;
+}
+.partino-admin .partino-empty .dashicons {
+	font-size: 44px;
+	width: 44px;
+	height: 44px;
+	color: #cbd5e1;
+	margin-bottom: 8px;
+}
+
+/* Detail */
+.partino-admin .partino-detail-grid {
+	display: grid;
+	grid-template-columns: 1fr 1.4fr;
+	gap: 20px;
+	align-items: start;
+}
+@media (max-width: 960px) {
+	.partino-admin .partino-detail-grid {
+		grid-template-columns: 1fr;
+	}
+}
+.partino-admin .partino-detail-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.partino-admin .partino-detail-table th {
+	text-align: right;
+	color: #64748b;
+	font-weight: 600;
+	padding: 8px 0;
+	width: 130px;
+	vertical-align: top;
+}
+.partino-admin .partino-detail-table td {
+	padding: 8px 0;
+}
+.partino-admin .partino-inline-form {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+
+/* Chat log */
+.partino-admin .partino-chat-log {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: 480px;
+	overflow-y: auto;
+	padding: 6px;
+	background: #f8fafc;
+	border-radius: 10px;
+}
+.partino-admin .partino-chat-line {
+	display: flex;
+	gap: 10px;
+	align-items: baseline;
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	padding: 8px 12px;
+	font-size: 13px;
+}
+.partino-admin .partino-chat-assistant {
+	border-inline-start: 3px solid #2271b1;
+}
+.partino-admin .partino-chat-user {
+	border-inline-start: 3px solid #16a34a;
+}
+.partino-admin .partino-chat-system {
+	border-inline-start: 3px solid #94a3b8;
+	opacity: 0.8;
+}
+.partino-admin .partino-chat-role {
+	font-weight: 700;
+	color: #475569;
+	flex: 0 0 44px;
+}
+.partino-admin .partino-chat-content {
+	flex: 1;
+	white-space: pre-line;
+}
+.partino-admin .partino-chat-time {
+	color: #94a3b8;
+	font-size: 11px;
+}
+
+/* Tabs */
+.partino-admin .partino-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin: 14px 0 18px;
+	border-bottom: 1px solid #e2e8f0;
+	padding-bottom: 0;
+}
+.partino-admin .partino-tabs a {
+	padding: 9px 16px;
+	text-decoration: none;
+	color: #475569;
+	border: 1px solid transparent;
+	border-bottom: none;
+	border-radius: 10px 10px 0 0;
+	font-weight: 600;
+	font-size: 13px;
+}
+.partino-admin .partino-tabs a.active {
+	background: #fff;
+	border-color: #e2e8f0;
+	color: #1d4ed8;
+	position: relative;
+	top: 1px;
+}
+
+/* Danger buttons */
+.partino-admin .button.partino-danger {
+	color: #b91c1c;
+	border-color: #fca5a5;
+}
+.partino-admin .button.partino-danger:hover {
+	background: #fef2f2;
+	border-color: #ef4444;
+}
+
+/* Settings layout + preview */
+.partino-admin .partino-settings-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 380px;
+	gap: 20px;
+	align-items: start;
+}
+.partino-admin .partino-settings-layout .partino-settings-panel {
+	grid-column: 1;
+}
+.partino-admin .partino-preview-panel {
+	position: sticky;
+	top: 46px;
+}
+@media (max-width: 1100px) {
+	.partino-admin .partino-settings-layout {
+		grid-template-columns: 1fr;
+	}
+	.partino-admin .partino-preview-panel {
+		position: static;
+	}
+}
+
+.partino-admin .partino-preview-window {
+	direction: rtl;
+	border-radius: 24px;
+	overflow: hidden;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 10px 34px rgba(15, 30, 60, 0.14);
+	font-size: var(--pv-font, 13px);
+	background: #fff;
+}
+.partino-admin .partino-preview-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 16px;
+	background: #fff;
+	border-bottom: 1px solid #eef1f6;
+	flex-direction: row-reverse;
+}
+.partino-admin .partino-preview-close {
+	background: #f4f6fa;
+	border-radius: 10px;
+	width: 34px;
+	height: 34px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #33415c;
+}
+.partino-admin .partino-preview-logo {
+	width: 38px;
+	height: 38px;
+	border: 1px solid #eef1f6;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+.partino-admin .partino-preview-logo span {
+	background: var(--pv-primary, #2069b2);
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 800;
+}
+.partino-admin .partino-preview-logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+.partino-admin .partino-preview-titles {
+	display: flex;
+	flex-direction: column;
+	margin-inline-end: auto;
+}
+.partino-admin .partino-preview-titles strong {
+	font-size: 13.5px;
+	color: #0f1c33;
+}
+.partino-admin .partino-preview-titles small {
+	color: #7c8aa5;
+	font-size: 11px;
+}
+.partino-admin .partino-preview-body {
+	background: var(--pv-bg, #eef2f7);
+	padding: 14px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	min-height: 210px;
+}
+.partino-admin .partino-preview-card {
+	background: #fff;
+	border: 1px solid var(--pv-border, #e2e8f0);
+	border-radius: var(--pv-radius, 20px);
+	padding: 14px;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(20, 40, 80, 0.05);
+	white-space: pre-line;
+	color: var(--pv-text, #1e293b);
+}
+.partino-admin .partino-preview-badge {
+	display: inline-block;
+	background: #e8f1fb;
+	color: var(--pv-primary, #2069b2);
+	border-radius: 999px;
+	padding: 3px 12px;
+	font-size: 11px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+.partino-admin .partino-preview-options {
+	display: flex;
+	gap: 8px;
+}
+.partino-admin .partino-preview-options span {
+	flex: 1;
+	background: #fff;
+	border: 1px solid var(--pv-border, #e2e8f0);
+	border-radius: var(--pv-btn-radius, 12px);
+	padding: 9px 8px;
+	text-align: center;
+	font-weight: 600;
+	font-size: 12px;
+	color: #22314e;
+}
+.partino-admin .partino-preview-input {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 12px;
+	background: var(--pv-bg, #eef2f7);
+}
+.partino-admin .partino-preview-input em {
+	flex: 1;
+	background: #fff;
+	border: 1px solid var(--pv-border, #e2e8f0);
+	border-radius: 14px;
+	padding: 10px 12px;
+	color: #9aa8bf;
+	font-style: normal;
+	font-size: 12px;
+}
+.partino-admin .partino-preview-send {
+	width: 36px;
+	height: 36px;
+	background: var(--pv-primary, #2069b2);
+	color: #fff;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+}
+.partino-admin .partino-preview-mic {
+	width: 36px;
+	height: 36px;
+	background: #fff;
+	border: 1px solid var(--pv-border, #e2e8f0);
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Test AI result */
+.partino-admin #partino-test-ai-result {
+	margin-inline-start: 10px;
+	font-weight: 600;
+}
+.partino-admin #partino-test-ai-result.ok {
+	color: #047857;
+}
+.partino-admin #partino-test-ai-result.err {
+	color: #b91c1c;
+}
